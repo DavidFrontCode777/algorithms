@@ -5,8 +5,8 @@
 
 var isSymmetric = function(root) {
     const dfs = (left, right) => {
-        if (!left && !right) return true;
-        if (!left || !right) return false;
+        if (!left && !right) return true; // проверка что оба узла null
+        if (!left || !right) return false; // проверка на то что хотябы один узел отсутствует
         
         return (left.val === right.val &&
                 dfs(left.left, right.right) &&

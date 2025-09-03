@@ -30,3 +30,29 @@ var levelOrder = function(root) {
 
   return res;
 }
+
+// ниже 2-ое решение, без использования shift() потому что в js это дорогостоящая операция
+
+var levelOrder = function(root) {
+  if (!root) return []
+  
+  const res = []
+  const queue = [root]
+  let head = 0;
+
+  while (head < queue.length) {
+      const qLength = queue.length - head
+      let level = []
+
+      for (let i = 0; i < qLength; i++) {
+          const elem = queue[head++]
+          level.push(elem.val)
+          if (elem.left) queue.push(elem.left)
+          if (elem.right) queue.push(elem.right)
+      }
+      
+      res.push(level)
+  }
+
+  return res
+};
